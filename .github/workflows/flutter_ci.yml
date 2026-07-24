@@ -10,7 +10,7 @@ on:
 # [- run] =  denotes an item in a list means, separate step
 jobs:
   validate_integration:
-    run-on: ubuntu_latest
+    runs-on: ubuntu_latest
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
