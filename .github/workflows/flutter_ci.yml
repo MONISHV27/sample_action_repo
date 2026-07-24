@@ -9,7 +9,7 @@ on:
 # [run] = it belongs to name
 # [- run] =  denotes an item in a list means, separate step
 jobs:
-  validate_integration
+  validate_integration:
     runs-on: ubuntu_latest
     steps:
       - name: checkout repository
