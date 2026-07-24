@@ -1,0 +1,34 @@
+name : Flutter CI Pipeline
+
+on:
+  pull_request:
+    branches: [development]
+# [steps] section of a job, every separate step must start with a dash[-]
+# [-] it act like start button for a single task
+# [run] | [-run] - terminal Command  
+# [run] = it belongs to name
+# [- run] =  denotes an item in a list means, separate step
+jobs:
+  validate_integration
+    runs-on: ubuntu_latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: set up Java sdk
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+      - name: set up Flutter sdk
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - run: flutter --version  
+      - name: Install Dependencies
+        run: flutter pub get
+      - name: Run code Analyzer
+        run: flutter Analyze
+      - name: Execute test
+        run: flutter test
