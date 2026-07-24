@@ -10,7 +10,7 @@ on:
 # [- run] =  denotes an item in a list means, separate step
 jobs:
   validate_integration:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
@@ -29,6 +29,6 @@ jobs:
       - name: Install Dependencies
         run: flutter pub get
       - name: Run code Analyzer
-        run: flutter Analyze
+        run: flutter analyze
       - name: Execute test
         run: flutter test
